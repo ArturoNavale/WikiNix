@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "wikipedia-timeline"
+    }
+  },
+  "defaultProject": "wikipedia-timeline",
+  "cli": {
+    "analytics": false
+  }
 }
