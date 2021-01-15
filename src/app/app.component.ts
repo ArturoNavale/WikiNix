@@ -16,14 +16,18 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
 
+    console.log("ngOnInit");
+
     //the following formula changes the state of a div (makes is appear)
     this.appear = true
 
-    console.log("hoi");
+
 
   }
 
   ngAfterViewInit() {
+
+    console.log("ngAfterViewInit");
 
     //prints the viewchild text which is not  available in  the ngOnInit
     console.log(this.myDiv.nativeElement.innerHTML)
