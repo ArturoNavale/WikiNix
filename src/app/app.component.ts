@@ -17,7 +17,8 @@ export class AppComponent implements OnInit {
       {
         actionType: 'add-text',
         target: 'hide-element1',
-        textToAdd: 'Arthur is een programmeergod. Ruben is er ook een.',
+        textToAdd:
+          'Arthur is <strong>een</strong> programmeergod. Ruben is er ook een.',
       },
       {
         actionType: 'replace-text',
