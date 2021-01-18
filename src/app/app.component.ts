@@ -17,14 +17,15 @@ export class AppComponent implements OnInit {
       {
         actionType: 'add-text',
         target: 'hide-element1',
-        textToAdd: 'Arthur is een programmeergod',
+        textToAdd: 'Arthur is een programmeergod. Ruben is er ook een.',
       },
-      // {
-      //   actionType: 'replace-text',
-      //   target: 'hide-element1',
-      //   textToReplace: 'Arthur is een programmeergod',
-      //   textToReplaceWith: 'Arthur is GEEN programmeergod',
-      // },
+      {
+        actionType: 'replace-text',
+        target: 'hide-element1',
+        targetText: 'Arthur is een programmeergod',
+        textToReplace: 'een',
+        textToReplaceWith: 'GEEN',
+      },
     ];
 
     actions.forEach((action) => this.executeAction(action));
