@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   appear: boolean = false;
 
   //finds div with tag #wordGezocht and assigns it to myDiv
-  @ViewChild('myDiv') myDiv: ElementRef;
+  @ViewChild('myDiv2') myDiv: ElementRef;
 
 
   ngOnInit(): void {
@@ -33,9 +33,9 @@ export class AppComponent implements OnInit {
     //Define element to replace
     var str = this.myDiv.nativeElement.innerHTML;
     //Replace
-    var res = str.replace("gezocht", "gevonden");
+    var res = str.replace("gezocht", "gevonden en aangepast");
     //Places back into HTML
-    document.getElementById("demo").innerHTML = res;
+    this.myDiv.nativeElement.innerHTML = res;
 
   }
 
