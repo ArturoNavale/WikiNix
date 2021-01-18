@@ -3,41 +3,74 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
-
-
 export class AppComponent implements OnInit {
-
-  //following line is the initial status of a div
-  appear: boolean = false;
-
-  //finds div with tag #wordGezocht and assigns it to myDiv
-  @ViewChild('myDiv2') myDiv: ElementRef;
-
-
-  ngOnInit(): void {
-    console.log("ngOnInit");
-
-    //the following formula changes the state of a div (makes is appear)
-    this.appear = true
-
-  }
+  ngOnInit() {}
 
   ngAfterViewInit() {
-    console.log("ngAfterViewInit");
-
-    //prints the viewchild text which is not  available in  the ngOnInit
-    console.log(this.myDiv.nativeElement.innerHTML)
-
-    //Define element to replace
-    var str = this.myDiv.nativeElement.innerHTML;
-    //Replace
-    var res = str.replace("gezocht", "gevonden en aangepast");
-    //Places back into HTML
-    this.myDiv.nativeElement.innerHTML = res;
-
+    console.log('ngAfterViewInit');
   }
 
-}
+  public onClickButton(): void {
+    const actions = [
+      {
+        actionType: 'add-text',
+        target: 'hide-element1',
+        textToAdd: 'Arthur is een programmeergod',
+      },
+      // {
+      //   actionType: 'replace-text',
+      //   target: 'hide-element1',
+      //   textToReplace: 'Arthur is een programmeergod',
+      //   textToReplaceWith: 'Arthur is GEEN programmeergod',
+      // },
+    ];
 
+    actions.forEach((action) => this.executeAction(action));
+  }
+
+  public executeAction(action) {
+    console.log('Actions was excuted', action);
+    switch (action.actionType) {
+      case 'hide': {
+        this.hideElement(action);
+        break;
+      }
+      case 'display': {
+        this.displayElement(action);
+        break;
+      }
+      case 'add-text': {
+        this.addText(action);
+        break;
+      }
+      case 'replace-text': {
+        this.addText(action);
+        break;
+      }
+    }
+  }
+
+  public hideElement(action): void {
+    const element = document.getElementById(action.target);
+    element.style.display = 'none';
+  }
+
+  public displayElement(action): void {
+    const element = document.getElementById(action.target);
+    element.style.display = 'block';
+  }
+
+  public addText(action): void {
+    let element = document.getElementById(action.target);
+    element.innerHTML = action.textToAdd;
+  }
+
+  public replaceText(action): void {
+    let element = document.getElementById(action.target);
+    const content = element.innerHTML;
+
+    // TODO replace text
+  }
+}
