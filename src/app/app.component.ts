@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
         break;
       }
       case 'replace-text': {
-        this.addText(action);
+        this.replaceText(action);
         break;
       }
     }
