@@ -1,3 +1,4 @@
+import { animate } from '@angular/animations';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
@@ -23,9 +24,9 @@ export class AppComponent implements OnInit {
       {
         actionType: 'replace-text',
         target: 'replace-element1',
-        targetText: 'Arthur is een programmeergod',
-        textToReplace: 'een',
-        textToReplaceWith: 'GEEN',
+        targetText: 'Arthur is geen programmeergod',
+        textToReplace: 'geen programmeergod',
+        textToReplaceWith: 'EEN programmeergod',
       },
     ];
 
@@ -73,15 +74,15 @@ export class AppComponent implements OnInit {
     let element = document.getElementById(action.target);
 
     //add span before and after text to replace
+
     var oldString = element.innerHTML;
 
-    var newString = oldString.replace(action.textToReplace, "</span>" + action.textToReplace + "<span>");
+    var newString = oldString.replace(action.textToReplace, "</span><span class='animate'>" + action.textToReplaceWith + "</span><span>");
 
     const content = newString;
 
     //add span before and after complete string
     element.innerHTML = '<span>' + content + '</span>';
-
 
   }
 }
