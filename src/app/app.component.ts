@@ -6,7 +6,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngAfterViewInit() {
     console.log('ngAfterViewInit');
@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
       },
       {
         actionType: 'replace-text',
-        target: 'hide-element1',
+        target: 'replace-element1',
         targetText: 'Arthur is een programmeergod',
         textToReplace: 'een',
         textToReplaceWith: 'GEEN',
@@ -71,8 +71,17 @@ export class AppComponent implements OnInit {
 
   public replaceText(action): void {
     let element = document.getElementById(action.target);
-    const content = element.innerHTML;
 
-    // TODO replace text
+    //add span before and after text to replace
+    var oldString = element.innerHTML;
+
+    var newString = oldString.replace(action.textToReplace, "</span>" + action.textToReplace + "<span>");
+
+    const content = newString;
+
+    //add span before and after complete string
+    element.innerHTML = '<span>' + content + '</span>';
+
+
   }
 }
