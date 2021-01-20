@@ -1,5 +1,6 @@
 import { animate } from '@angular/animations';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import Typewriter from 'typewriter-effect/dist/core';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,28 @@ export class AppComponent implements OnInit {
 
   ngAfterViewInit() {
     console.log('ngAfterViewInit');
+
+
+    var app = document.getElementById('app');
+
+    var typewriter = new Typewriter(app, {
+      delay: 75,
+    });
+
+    typewriter
+      .pauseFor(2500)
+      .typeString('A simple yet powerful native javascript')
+      .pauseFor(300)
+      .deleteChars(10)
+      .typeString('<strong>JS</strong> plugin for a cool typewriter effect and ')
+      .typeString('<strong>only <span style="color: #27ae60;">5kb</span> Gzipped!</strong>')
+      .pauseFor(1000)
+      .callFunction(() => {
+        console.log('typewriter finished')
+      })
+      .start();
+
+
   }
 
   public onClickButton(): void {
