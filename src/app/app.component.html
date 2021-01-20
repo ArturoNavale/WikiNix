@@ -1,19 +1,23 @@
-<button (click)="onClickButton()">Click me</button>
+<ng-container *ngIf="displayTypeWriterDemo; else displayWikipedia">
+  <button (click)="onClickButton()">Click me</button>
 
-<p>Voorbeeld tekst replace</p>
+  <p>Voorbeeld tekst replace</p>
 
-<p>start state</p>
+  <p>start state</p>
 
-<div id="hide-element1"></div>
-<div id="replace-element1">Arthur is geen programmeergod. Ruben is er ook een.</div>
-<div class="css-typing">
+  <div id="hide-element1"></div>
+  <div id="replace-element1">
+    Arthur is geen programmeergod. Ruben is er ook een.
+  </div>
+  <div class="css-typing">
     <p>Arthur is geen programmeergod. Ruben is er ook een.</p>
-</div>
+  </div>
 
+  <span>arthur is goed</span><span class="animate">animeer dit</span
+  ><span>hoop dat het nu werkt</span>
 
-<span>arthur is goed</span><span class=" animate">animeer dit</span><span>hoop dat het nu werkt</span>
-<!-- <app-wikipedia></app-wikipedia> -->
-
-<div id="app">
-
-</div>
+  <div id="app"></div>
+</ng-container>
+<ng-template #displayWikipedia>
+  <app-wikipedia></app-wikipedia>
+</ng-template>

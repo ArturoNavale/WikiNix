@@ -1,5 +1,4 @@
-import { animate } from '@angular/animations';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import Typewriter from 'typewriter-effect/dist/core';
 
 @Component({
@@ -7,16 +6,31 @@ import Typewriter from 'typewriter-effect/dist/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
-  ngOnInit() { }
+export class AppComponent implements OnInit, AfterViewInit {
+  public displayTypeWriterDemo = true;
+
+  public fruit: string[] = [
+    'Apple',
+    'Banana',
+    'Orange',
+    'Apple',
+    'Banana',
+    'Orange',
+  ];
+
+  ngOnInit() {
+    console.log(this.fruit.length);
+    console.log(this.fruit[0]);
+    this.fruit.push('Grape');
+    console.log(this.fruit.length);
+  }
 
   ngAfterViewInit() {
     console.log('ngAfterViewInit');
 
+    const app = document.getElementById('app');
 
-    var app = document.getElementById('app');
-
-    var typewriter = new Typewriter(app, {
+    const typewriter = new Typewriter(app, {
       delay: 75,
     });
 
@@ -25,19 +39,21 @@ export class AppComponent implements OnInit {
       .typeString('A simple yet powerful native javascript')
       .pauseFor(300)
       .deleteChars(10)
-      .typeString('<strong>JS</strong> plugin for a cool typewriter effect and ')
-      .typeString('<strong>only <span style="color: #27ae60;">5kb</span> Gzipped!</strong>')
+      .typeString(
+        '<strong>JS</strong> plugin for a cool typewriter effect and '
+      )
+      .typeString(
+        '<strong>only <span style="color: #27ae60;">5kb</span> Gzipped!</strong>'
+      )
       .pauseFor(1000)
       .callFunction(() => {
-        console.log('typewriter finished')
+        console.log('typewriter finished');
       })
       .start();
-
-
   }
 
   public onClickButton(): void {
-    const actions = [
+    const actions: Action[] = [
       {
         actionType: 'add-text',
         target: 'hide-element1',
@@ -89,23 +105,27 @@ export class AppComponent implements OnInit {
   }
 
   public addText(action): void {
-    let element = document.getElementById(action.target);
+    const element = document.getElementById(action.target);
     element.innerHTML = action.textToAdd;
   }
 
   public replaceText(action): void {
-    let element = document.getElementById(action.target);
+    const element = document.getElementById(action.target);
 
-    //add span before and after text to replace
+    // add span before and after text to replace
 
-    var oldString = element.innerHTML;
+    const oldString = element.innerHTML;
 
-    var newString = oldString.replace(action.textToReplace, "</span><span class='animate'>" + action.textToReplaceWith + "</span><span>");
+    const newString = oldString.replace(
+      action.textToReplace,
+      "</span><span class='animate'>" +
+        action.textToReplaceWith +
+        '</span><span>'
+    );
 
     const content = newString;
 
-    //add span before and after complete string
+    // add span before and after complete string
     element.innerHTML = '<span>' + content + '</span>';
-
   }
 }
