@@ -26,7 +26,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    console.log('ngAfterViewInit');
 
   }
 
@@ -43,7 +42,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         target: 'replace-element1',
         targetText: 'Arthur is geen programmeergod',
         textToReplace: 'geen programmeergod',
-        textToReplaceWith: 'EEN programmeergod',
+        textToReplaceWith: '<li><a href="Carrot.html" title="Carrot">Carrot</a> &#8211; defined to be a fruit in <a href="European_Union_law.html" title="European Union law">European Union law</a>, forthe purpose of <a href="Jam.html" class="mw-redirect" title="Jam">jam</a> classification;Annex III(A)(1), Council Directive 2001/113/EC of 20 December 2001 relating to fruit jams, jellies and marmalades and sweetened chestnut purée intended for human consumption</li>',
       },
     ];
 
@@ -89,8 +88,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     });
 
     typewriter
-      .pauseFor(2500)
+      .pauseFor(500)
       .typeString(action.textToAdd)
+      .pauseFor(500)
       .callFunction(() => {
         element.innerHTML = action.textToAdd;
       })
@@ -115,8 +115,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     });
 
     typewriter
-      .pauseFor(2500)
+      .pauseFor(500)
       .typeString(action.textToReplaceWith)
+      .pauseFor(500)
       .callFunction(() => {
         element.innerHTML = newString;
       })
