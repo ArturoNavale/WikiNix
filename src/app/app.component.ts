@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import Typewriter from 'typewriter-effect/dist/core';
+import { Action } from 'src/app/models/action';
+import * as data from '../assets/config.json';
 
 @Component({
   selector: 'app-root',
@@ -30,21 +32,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   public onClickButton(): void {
-    const actions: Action[] = [
-      {
-        actionType: 'add-text',
-        target: 'hide-element1',
-        textToAdd:
-          'Arthur is <strong>een</strong> programmeergod. Ruben is er ook een.',
-      },
-      {
-        actionType: 'replace-text',
-        target: 'replace-element1',
-        targetText: 'Arthur is geen programmeergod',
-        textToReplace: 'geen programmeergod',
-        textToReplaceWith: '<li><a href="Carrot.html" title="Carrot">Carrot</a> &#8211; defined to be a fruit in <a href="European_Union_law.html" title="European Union law">European Union law</a>, forthe purpose of <a href="Jam.html" class="mw-redirect" title="Jam">jam</a> classification;Annex III(A)(1), Council Directive 2001/113/EC of 20 December 2001 relating to fruit jams, jellies and marmalades and sweetened chestnut purée intended for human consumption</li>',
-      },
-    ];
+    const actions: Action [] = (data as any).default;
+    
 
     actions.forEach((action) => this.executeAction(action));
   }
