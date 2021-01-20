@@ -103,10 +103,23 @@ export class AppComponent implements OnInit, AfterViewInit {
     // add span before and after text to replace
 
     const oldString = element.innerHTML;
-
-    const newString = oldString.replace(action.textToReplace, '</span><span>' + action.textToReplaceWith + '</span><span>');
+    const animateString = oldString.replace(action.textToReplace, '</span><span id="animate"></span><span>');
+    const newString = oldString.replace(action.textToReplace, action.textToReplaceWith);
 
     // add span before and after complete string
-    element.innerHTML = '<span>' + newString + '</span>';
+    element.innerHTML = '<span>' + animateString + '</span>';
+
+    const animate = document.getElementById('animate');
+    const typewriter = new Typewriter(animate, {
+      delay: 75,
+    });
+
+    typewriter
+      .pauseFor(2500)
+      .typeString(action.textToReplaceWith)
+      .callFunction(() => {
+        element.innerHTML = newString;
+      })
+      .start();
   }
 }
