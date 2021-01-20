@@ -28,28 +28,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     console.log('ngAfterViewInit');
 
-    const app = document.getElementById('app');
-
-    const typewriter = new Typewriter(app, {
-      delay: 75,
-    });
-
-    typewriter
-      .pauseFor(2500)
-      .typeString('A simple yet powerful native javascript')
-      .pauseFor(300)
-      .deleteChars(10)
-      .typeString(
-        '<strong>JS</strong> plugin for a cool typewriter effect and '
-      )
-      .typeString(
-        '<strong>only <span style="color: #27ae60;">5kb</span> Gzipped!</strong>'
-      )
-      .pauseFor(1000)
-      .callFunction(() => {
-        console.log('typewriter finished');
-      })
-      .start();
   }
 
   public onClickButton(): void {
@@ -106,7 +84,17 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public addText(action): void {
     const element = document.getElementById(action.target);
-    element.innerHTML = action.textToAdd;
+    const typewriter = new Typewriter(element, {
+      delay: 75,
+    });
+
+    typewriter
+      .pauseFor(2500)
+      .typeString(action.textToAdd)
+      .callFunction(() => {
+        element.innerHTML = action.textToAdd;
+      })
+      .start();
   }
 
   public replaceText(action): void {
@@ -116,16 +104,9 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     const oldString = element.innerHTML;
 
-    const newString = oldString.replace(
-      action.textToReplace,
-      "</span><span class='animate'>" +
-        action.textToReplaceWith +
-        '</span><span>'
-    );
-
-    const content = newString;
+    const newString = oldString.replace(action.textToReplace, '</span><span>' + action.textToReplaceWith + '</span><span>');
 
     // add span before and after complete string
-    element.innerHTML = '<span>' + content + '</span>';
+    element.innerHTML = '<span>' + newString + '</span>';
   }
 }
