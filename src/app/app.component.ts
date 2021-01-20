@@ -34,8 +34,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   public onClickButton(): void {
     const actions: Action [] = (data as any).default;
     
+    console.log(actions);
+     
 
-    actions.forEach((action) => this.executeAction(action));
+    actions.forEach((actions) => this.executeAction(actions));
   }
 
   public executeAction(action) {
