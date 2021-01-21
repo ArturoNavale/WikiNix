@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import Typewriter from 'typewriter-effect/dist/core';
+import { Snapshot } from 'src/app/models/snapshot';
 import { Action } from 'src/app/models/action';
 import * as data from '../assets/config.json';
 
@@ -34,7 +35,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public onClickButton(): void {
 
-
+    const snapshots: Snapshot [] = (data as any).default;
     const actions: Action [] = (data as any).default;
 
   
