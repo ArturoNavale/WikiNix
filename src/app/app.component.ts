@@ -3,6 +3,7 @@ import Typewriter from 'typewriter-effect/dist/core';
 import { Action } from 'src/app/models/action';
 import * as data from '../assets/config.json';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -32,12 +33,16 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   public onClickButton(): void {
-    const actions: Action [] = (data as any).default;
-    
-    console.log(actions);
-     
 
-    actions.forEach((actions) => this.executeAction(actions));
+
+    const actions: Action [] = (data as any).default;
+
+  
+    console.log(actions);
+   
+    
+    actions.forEach((action) => this.executeAction(action));
+
   }
 
   public executeAction(action) {
@@ -57,6 +62,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       }
       case 'replace-text': {
         this.replaceText(action);
+        console.log('Replace was excuted', action);
         break;
       }
     }
