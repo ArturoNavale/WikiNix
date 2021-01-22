@@ -13,6 +13,7 @@ import { ActionSequence } from 'protractor';
 })
 export class AppComponent implements OnInit, AfterViewInit {
   public displayTypeWriterDemo = true;
+  public snapshotCount = 0;
 
   public fruit: string[] = [
     'Apple',
@@ -36,13 +37,17 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public onClickButton(): void {
 
+
     const snapshots: Snapshot[] = (data as any).default;
-    const actions = snapshots[0].actions;
+    const actions = snapshots[this.snapshotCount].actions;
 
     console.log('snapshots', snapshots);
     console.log('r', actions);
 
     actions.forEach((action) => this.executeAction(action));
+
+    this.snapshotCount++;
+    console.log(this.snapshotCount);
 
   }
 

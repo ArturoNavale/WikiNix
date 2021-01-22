@@ -1,17 +1,11 @@
-
 [
   {
     "authors": [
       "Arthur",
-       "Ruben"
-      ],
+      "Ruben"
+    ],
     "audio": 1,
     "actions": [
-      {
-        "actionType": "add-text",
-        "target": "hide-element1",
-        "textToAdd":  "<strong>Arthur is geweldig met programeren</strong>"
-      },
       {
         "actionType": "replace-text",
         "target": "replace-element1",
@@ -19,27 +13,20 @@
         "textToReplace": "geen programmeergod",
         "textToReplaceWith": "een programmeergod"
       }
-]
-},
-{
-  "authors": [
-                "Arthur",
-                 "Ruben"
-                ],
-  "audio": 1,
-  "actions": [
-    {
-      "actionType": "add-text",
-      "target": "hide-element1",
-      "textToAdd":  "<strong>Arthur is geweldig met programeren</strong>"
-    },
-    {
-      "actionType": "replace-text",
-      "target": "replace-element1",
-      "targetText": "Arthur is geen programmeergod",
-      "textToReplace": "geen programmeergod",
-      "textToReplaceWith": "een programmeergod"
-    }
-]
-}
+    ]
+  },
+  {
+    "authors": [
+      "Arthur",
+      "Ruben"
+    ],
+    "audio": 1,
+    "actions": [
+      {
+        "actionType": "add-text",
+        "target": "hide-element1",
+        "textToAdd": "<strong>Arthur is geweldig met programeren</strong>"
+      }
+    ]
+  }
 ]
