@@ -1,9 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import Typewriter from 'typewriter-effect/dist/core';
 import { Snapshot } from 'src/app/models/snapshot';
-import { Action } from 'src/app/models/action';
 import * as data from '../assets/config.json';
-import { ActionSequence } from 'protractor';
 
 
 @Component({
@@ -15,20 +13,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   public displayTypeWriterDemo = true;
   public snapshotCount = 0;
 
-  public fruit: string[] = [
-    'Apple',
-    'Banana',
-    'Orange',
-    'Apple',
-    'Banana',
-    'Orange',
-  ];
 
   ngOnInit() {
-    console.log(this.fruit.length);
-    console.log(this.fruit[0]);
-    this.fruit.push('Grape');
-    console.log(this.fruit.length);
   }
 
   ngAfterViewInit() {
@@ -42,7 +28,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     const actions = snapshots[this.snapshotCount].actions;
 
     console.log('snapshots', snapshots);
-    console.log('r', actions);
+    console.log('actions', actions);
 
     actions.forEach((action) => this.executeAction(action));
 
@@ -52,7 +38,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   public executeAction(action) {
-    console.log('Actions was excuted', action);
     switch (action.actionType) {
       case 'hide': {
         this.hideElement(action);
