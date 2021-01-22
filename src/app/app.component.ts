@@ -1,43 +1,32 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import Typewriter from 'typewriter-effect/dist/core';
-import { Snapshot } from 'src/app/models/snapshot';
 import * as data from '../assets/config.json';
-
+import { Action } from './models/action';
+import { Snapshot } from './models/snapshot';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit {
   public displayTypeWriterDemo = true;
   public snapshotCount = 0;
-
+  public snapshots: Snapshot[];
 
   ngOnInit() {
-  }
-
-  ngAfterViewInit() {
-
+    this.snapshots = (data as any).default;
+    console.log('snapshots', this.snapshots);
   }
 
   public onClickButton(): void {
-
-
-    const snapshots: Snapshot[] = (data as any).default;
-    const actions = snapshots[this.snapshotCount].actions;
-
-    console.log('snapshots', snapshots);
-    console.log('actions', actions);
-
-    actions.forEach((action) => this.executeAction(action));
-
+    this.snapshots[this.snapshotCount].actions.forEach((action) =>
+      this.executeAction(action)
+    );
     this.snapshotCount++;
-    console.log(this.snapshotCount);
-
   }
 
-  public executeAction(action) {
+  public executeAction(action: Action) {
     switch (action.actionType) {
       case 'hide': {
         this.hideElement(action);
@@ -59,17 +48,17 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
   }
 
-  public hideElement(action): void {
+  public hideElement(action: Action): void {
     const element = document.getElementById(action.target);
     element.style.display = 'none';
   }
 
-  public displayElement(action): void {
+  public displayElement(action: Action): void {
     const element = document.getElementById(action.target);
     element.style.display = 'block';
   }
 
-  public addText(action): void {
+  public addText(action: Action): void {
     const element = document.getElementById(action.target);
     const typewriter = new Typewriter(element, {
       delay: 75,
@@ -85,14 +74,20 @@ export class AppComponent implements OnInit, AfterViewInit {
       .start();
   }
 
-  public replaceText(action): void {
+  public replaceText(action: Action): void {
     const element = document.getElementById(action.target);
 
     // add span before and after text to replace
 
     const oldString = element.innerHTML;
-    const animateString = oldString.replace(action.textToReplace, '</span><span id="animate"></span><span>');
-    const newString = oldString.replace(action.textToReplace, action.textToReplaceWith);
+    const animateString = oldString.replace(
+      action.textToReplace,
+      '</span><span id="animate"></span><span>'
+    );
+    const newString = oldString.replace(
+      action.textToReplace,
+      action.textToReplaceWith
+    );
 
     // add span before and after complete string
     element.innerHTML = '<span>' + animateString + '</span>';
