@@ -10,7 +10,7 @@ import { Snapshot } from './models/snapshot';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  public displayTypeWriterDemo = true;
+  public displayTypeWriterDemo = false;
   public snapshotCount = 0;
   public snapshots: Snapshot[];
 
@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
   }
 
   public onClickButton(): void {
+    console.log('button was clicked');
     this.snapshots[this.snapshotCount].actions.forEach((action) =>
       this.executeAction(action)
     );
@@ -30,14 +31,17 @@ export class AppComponent implements OnInit {
     switch (action.actionType) {
       case 'hide': {
         this.hideElement(action);
+        console.log('Hide was excuted', action);
         break;
       }
       case 'display': {
         this.displayElement(action);
+        console.log('Display was excuted', action);
         break;
       }
       case 'add-text': {
         this.addText(action);
+        console.log('Add was excuted', action);
         break;
       }
       case 'replace-text': {

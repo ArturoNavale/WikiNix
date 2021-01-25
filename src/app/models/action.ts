@@ -4,5 +4,4 @@ export interface Action {
   textToAdd?: string;
   textToReplace?: string;
   textToReplaceWith?: string;
-  targetText?: string;
 }

@@ -5,10 +5,9 @@
     "actions": [
       {
         "actionType": "replace-text",
-        "target": "replace-element1",
-        "targetText": "Arthur is geen programmeergod",
-        "textToReplace": "geen programmeergod",
-        "textToReplaceWith": "een <a href=\"https://www.wikipedia.org/\"><i>programmeergod</i></a> <h2><span id=\"The_Court.27s_decision\"></span><span class=\"mw-headline\"\r\n                        id=\"The_Court's_decision\">Subtitle</span><span class=\"mw-editsection\"><span\r\n                            class=\"mw-editsection-bracket\">[</span><a\r\n                            href=\"https://en.wikipedia.org/w/index.php?title=Nix_v._Hedden&action=edit&section=2\"\r\n                            title=\"Edit section: The Court&#039;s decision\">edit</a><span\r\n                            class=\"mw-editsection-bracket\">]</span></span></h2>"
+        "target": "mw-content-text",
+        "textToReplace": "this act.\"",
+        "textToReplaceWith": " Definitions of \"fruit\" and \"vegetable\"\r\nwere read from the\r\n<a href=\"/wiki/Webster%27s_Dictionary\" title=\"Webster's Dictionary\"\r\n  >Webster's Dictionary</a\r\n>\r\nand witnesses involved in fruit and vegetable commerce were called."
       }
     ]
   },
