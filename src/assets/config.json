@@ -5,9 +5,9 @@
     "actions": [
       {
         "actionType": "replace-text",
-        "target": "mw-content-text",
+        "target": "Introduction",
         "textToReplace": "this act.\"",
-        "textToReplaceWith": " Definitions of \"fruit\" and \"vegetable\"\r\nwere read from the\r\n<a href=\"/wiki/Webster%27s_Dictionary\" title=\"Webster's Dictionary\"\r\n  >Webster's Dictionary</a\r\n>\r\nand witnesses involved in fruit and vegetable commerce were called."
+        "textToReplaceWith": "Definitions of \"fruit\" and \"vegetable\"\r\nwere read from the\r\n<a href=\"/wiki/Webster%27s_Dictionary\" title=\"Webster's Dictionary\"\r\n  >Webster's Dictionary</a\r\n>\r\nand witnesses involved in fruit and vegetable commerce were called."
       }
     ]
   },
@@ -16,9 +16,32 @@
     "audio": 1,
     "actions": [
       {
-        "actionType": "add-text",
-        "target": "hide-element1",
-        "textToAdd": "<strong>Arthur is geweldig met programeren</strong>"
+        "actionType": "replace-text",
+        "target": "External_Links",
+        "textToReplace": "Links",
+        "textToReplaceWith": "link"
+      }
+    ]
+  },
+  {
+    "authors": ["Arthur", "Ruben"],
+    "audio": 1,
+    "actions": [
+      {
+        "actionType": "display",
+        "target": "catlinks"
+      }
+    ]
+  },
+  {
+    "authors": ["Arthur", "Ruben"],
+    "audio": 1,
+    "actions": [
+      {
+        "actionType": "replace-text",
+        "target": "Introduction",
+        "textToReplace": "was a supreme court case (<a href=\"/wiki/1893\" title=\"1893\">1893</a>) over",
+        "textToReplaceWith": "was an <a href=\"/wiki/1893\" title=\"1893\">1893</a> case tried before the <a href=\"/wiki/Supreme_Court_of_the_United_States\" title=\"Supreme Court of the United States\">Supreme Court of the United States</a> over"
       }
     ]
   }

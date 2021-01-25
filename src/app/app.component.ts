@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, } from '@angular/core';
 import Typewriter from 'typewriter-effect/dist/core';
 import * as data from '../assets/config.json';
 import { Action } from './models/action';
@@ -8,6 +8,7 @@ import { Snapshot } from './models/snapshot';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
   public displayTypeWriterDemo = false;
@@ -88,6 +89,9 @@ export class AppComponent implements OnInit {
       action.textToReplace,
       '</span><span id="animate"></span><span>'
     );
+
+    console.log(action.textToReplace);
+    console.log(action.textToReplaceWith);
     const newString = oldString.replace(
       action.textToReplace,
       action.textToReplaceWith
@@ -100,6 +104,8 @@ export class AppComponent implements OnInit {
     const typewriter = new Typewriter(animate, {
       delay: 75,
     });
+
+    console.log('newSting', newString);
 
     typewriter
       .pauseFor(500)
