@@ -3,7 +3,7 @@ import Typewriter from 'typewriter-effect/dist/core';
 import * as data from '../assets/config.json';
 import { Action } from './models/action';
 import { Snapshot } from './models/snapshot';
-
+import { uniqueId } from 'lodash';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   public displayTypeWriterDemo = false;
   public snapshotCount = 0;
   public snapshots: Snapshot[];
+  public onGoingActions: OnGoingAction[];
 
   ngOnInit() {
     this.snapshots = (data as any).default;
@@ -22,6 +23,9 @@ export class AppComponent implements OnInit {
 
   public onClickButton(): void {
     console.log('button was clicked');
+    if (!this.snapshots[this.snapshotCount]) {
+      return;
+    }
     this.snapshots[this.snapshotCount].actions.forEach((action) =>
       this.executeAction(action)
     );
@@ -81,17 +85,16 @@ export class AppComponent implements OnInit {
 
   public replaceText(action: Action): void {
     const element = document.getElementById(action.target);
-
+    const animateId = uniqueId();
+    console.log(animateId);
     // add span before and after text to replace
 
     const oldString = element.innerHTML;
     const animateString = oldString.replace(
       action.textToReplace,
-      '</span><span id="animate"></span><span>'
+      `</span><span id="${animateId}"></span><span>`
     );
 
-    console.log(action.textToReplace);
-    console.log(action.textToReplaceWith);
     const newString = oldString.replace(
       action.textToReplace,
       action.textToReplaceWith
@@ -100,7 +103,7 @@ export class AppComponent implements OnInit {
     // add span before and after complete string
     element.innerHTML = '<span>' + animateString + '</span>';
 
-    const animate = document.getElementById('animate');
+    const animate = document.getElementById(animateId);
     const typewriter = new Typewriter(animate, {
       delay: 75,
     });
