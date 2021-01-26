@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import Typewriter from 'typewriter-effect/dist/core';
 import * as data from '../assets/config.json';
 import { Action } from './models/action';
@@ -8,7 +8,7 @@ import { Snapshot } from './models/snapshot';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent implements OnInit {
   public displayTypeWriterDemo = false;
