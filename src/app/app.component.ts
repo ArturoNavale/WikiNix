@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   public displayTypeWriterDemo = false;
   public snapshotCount = 0;
   public snapshots: Snapshot[];
-  public onGoingActions: OnGoingAction[];
+  //public onGoingActions: OnGoingAction[];
 
   ngOnInit() {
     this.snapshots = (data as any).default;
